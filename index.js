@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-app.use(cors({origin: 'https://gilded-sunflower-516a55.netlify.app/'}));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(function(req, res, next) {
