@@ -4,9 +4,13 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-app.use(cors());
+app.use(cors({origin: 'https://gilded-sunflower-516a55.netlify.app/'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+ });
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
@@ -50,3 +54,4 @@ app.post("/find-product", (req, res) => {
         );
     }
 });
+
