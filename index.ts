@@ -41,7 +41,7 @@ app.post("/find-product", (req: any, res: any) => {
     res.redirect("/products");
   } else {
     pool.query(
-      `SELECT * FROM product WHERE name LIKE '%${product_name.toUpperCase()}%'`,
+      `SELECT * FROM product WHERE name LIKE = ?`, [product_name],
       (err: any, rows: Array<IProduct>) => {
         if (!err) {
           if(rows.length >0) res.send(rows);
@@ -53,3 +53,15 @@ app.post("/find-product", (req: any, res: any) => {
     );
   }
 });
+
+app.post("/filter-product", (req: any, res: any) => {
+  const { category_id } = req.body;
+  pool.query("SELECT * FROM product WHERE category = ?", [category_id], (err: any, rows: Array<IProduct>) =>{
+    if(!err){
+      if(rows.length >0) res.send(rows);
+      else res.redirect("/products");
+    }else{
+      res.redirect("/products");
+    }
+  })
+})
