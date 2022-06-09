@@ -17,6 +17,10 @@ const pool = mysql.createPool({
 app.listen(5000, () => {
     console.log("Server is running on port 5000");
 });
+app.get("/", (req, res) => {
+    res.send("<h2>Bsale backend desafío</h2>");
+})
+
 app.get("/products", (req, res) => {
     pool.query("SELECT * FROM product", (err, rows) => {
         res.send(rows);
