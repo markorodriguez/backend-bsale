@@ -14,11 +14,11 @@ const pool = mysql.createPool({
     password: "bsale_test",
     database: "bsale_test",
 });
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server is running on port 5000");
 });
 app.get("/", (req, res) => {
-    res.send("<h2>Bsale backend desafío</h2>");
+    res.send("Bsale backend desafío");
 })
 
 app.get("/products", (req, res) => {
