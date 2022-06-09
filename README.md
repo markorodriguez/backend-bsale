@@ -1,8 +1,18 @@
 
 # Desafío bsale - Backend
 
-Reto propuesto por bsale para el proceso de selección. Este proyecto permite realizar las consultas a la base de datos MySQL mediante un servidor en Node.js. Versión desplegada aquí: https://bsale-markorodriguez.herokuapp.com/ 
+## Explicación del ejercicio
 
+Se desarrolló una tienda virtual bajo una arquitectura cliente-servidor. Debido a esto, las funciones para cada capa quedan claramente establecidas.
+
+Por un lado, en el lado del cliente se desplegarán los productos y se podrán realizar operaciones como búsqueda, ordenar de forma ascendente o decreciente según el precio del producto.
+
+Por otro lado, en la capa de servidor se realizan tareas tales como la conexión a la base de datos y la ejecución de consultas. 
+
+Las tecnologías empleadas para el desarrollo del ejercicio son Vanilla JavaScript HTML, Tailwind CSS y JQuery para el apartado del frontend. El backend del mismo proyecto se desarrolló en TypeScript usando Express.js como framework para el servidor bajo Node.JS.
+
+Repositorio Frontend: https://github.com/markorodriguez/frontend-bsale  
+Repositorio Backend: https://github.com/markorodriguez/backend-bsale
 
 
 ## Instalación
