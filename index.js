@@ -33,19 +33,22 @@ app.get("/categories", (req, res) => {
 });
 app.post("/find-product", (req, res) => {
     const { product_name } = req.body;
+
     if (product_name.length == 0 || product_name == null) {
         res.redirect("/products");
     }
     else {
-        pool.query(`SELECT * FROM product WHERE name LIKE = ?`, [product_name], (err, rows) => {
+        pool.query("SELECT * FROM product WHERE name LIKE CONCAT('%', ? , '%')", [product_name], (err, rows) => {
             if (!err) {
-                if (rows.length > 0)
-                    res.send(rows);
+                if (rows.length > 0){
+                    
+                    res.send(rows);}
                 else
                     res.redirect("/products");
             }
             else {
-                res.send(null);
+                console.log('Error in the query');
+                res.redirect("/products");
             }
         });
     }
@@ -60,7 +63,7 @@ app.post("/filter-product", (req, res) => {
                 res.redirect("/products");
         }
         else {
-            res.send(null);
+            res.redirect("/products");
         }
     });
 });
