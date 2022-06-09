@@ -7,7 +7,9 @@ Reto propuesto por bsale para el proceso de selección. Este proyecto permite re
 
 ## Instalación
 
-El primer paso es clonar el repositorio y seguir las siguientes indicaciones:
+El primer paso es clonar el repositorio y seguir las siguientes indicaciones: 
+
+Se debe tener instalado Node.JS en el equipo.
 
 ```bash
   git clone https://github.com/markorodriguez/backend-bsale.git
@@ -17,7 +19,7 @@ El primer paso es clonar el repositorio y seguir las siguientes indicaciones:
     
 ## Endpoints API
 
-#### Obtener productos
+### Obtener productos
 
 ```http
   GET /products
@@ -32,7 +34,7 @@ Response
 | `discount` | `number` | Porcentaje de descuento |
 | `category` | `int` | Identificador de categoría |
 
-#### Obtener categorías
+### Obtener categorías
 
 ```http
   GET /categories
@@ -43,7 +45,7 @@ Response
 | `id`      | `number` | Identificador de categoría |
 | `name`      | `string` | Nombre de la categoría |
 
-#### Buscar producto
+### Buscar producto
 
 ```http
   POST /find-product
@@ -53,10 +55,21 @@ Request
 | :-------- | :------- | :------------------------- |
 | `product_name` | `string` | Nombre del producto |
 
+### Filtrar por categoría
+
+```http
+  POST /filter-product
+```
+Request
+| Campo | Tipo     | Descripción                |
+| :-------- | :------- | :------------------------- |
+| `category_id | `number` | Identificador de la categoría |
+
 
 
 ## Ejemplos
 
+### Obtener productos
 ```http
   GET /products
 ```
@@ -74,6 +87,7 @@ Estructura JSON
     ...
 ]
 ```
+### Obtener categorías
 
 ```http
   GET /categories
@@ -88,7 +102,7 @@ Estructura JSON
     ...
 ]
 ```
-
+### Encontrar producto
 
 ```http
   POST /find-product  (product_name = "energetica")
@@ -113,6 +127,33 @@ Estructura JSON
         "category": 1
     },
     ...
+]
+```
+
+### Filtrar producto por categoría
+
+```http
+  POST /find-product  (category_id = 2)
+```
+Estructura JSON
+```javascript
+[
+    {
+        "id": 8,
+        "name": "PISCO ALTO DEL CARMEN 35º",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto8532.jpg",
+        "price": 7990,
+        "discount": 10,
+        "category": 2
+    },
+    {
+        "id": 9,
+        "name": "PISCO ALTO DEL CARMEN 40º ",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto408581.jpg",
+        "price": 5990,
+        "discount": 0,
+        "category": 2
+    }, ...
 ]
 ```
 

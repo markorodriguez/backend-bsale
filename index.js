@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const app = express();
+const app = express(); //Inicialización de express
 const mysql = require("mysql");
 const cors = require("cors");
 app.use(cors());
