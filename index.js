@@ -19,14 +19,12 @@ app.listen(5000, () => {
 });
 app.get("/products", (req, res) => {
     pool.query("SELECT * FROM product", (err, rows) => {
-        if(!err)res.send(rows);
-        else res.send(null);
+        res.send(rows);
     });
 });
 app.get("/categories", (req, res) => {
     pool.query("SELECT * FROM category", (err, rows) => {
-        if(!err)res.send(rows);
-        else res.send(null);
+        res.send(rows);
     });
 });
 app.post("/find-product", (req, res) => {
@@ -43,7 +41,7 @@ app.post("/find-product", (req, res) => {
                     res.redirect("/products");
             }
             else {
-                res.redirect("/products");
+                res.send(null);
             }
         });
     }
@@ -58,7 +56,7 @@ app.post("/filter-product", (req, res) => {
                 res.redirect("/products");
         }
         else {
-            res.redirect("/products");
+            res.send(null);
         }
     });
 });

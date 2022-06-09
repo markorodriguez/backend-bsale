@@ -47,7 +47,7 @@ app.post("/find-product", (req: any, res: any) => {
           if(rows.length >0) res.send(rows);
           else res.redirect("/products");
         } else {
-          res.redirect("/products");
+          res.send(null)
         }
       }
     );
@@ -61,7 +61,7 @@ app.post("/filter-product", (req: any, res: any) => {
       if(rows.length >0) res.send(rows);
       else res.redirect("/products");
     }else{
-      res.redirect("/products");
+      res.send(null);
     }
   })
 })
