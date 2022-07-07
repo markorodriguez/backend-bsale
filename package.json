@@ -8,5 +8,24 @@
     "express": "^4.18.1",
     "mysql": "^2.18.1",
     "ts-node": "^10.8.1"
-  }
+  },
+  "name": "backend-bsale",
+  "description": "Se desarrolló una tienda virtual bajo una arquitectura cliente-servidor. Debido a esto, las funciones para cada capa quedan claramente establecidas.",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markorodriguez/backend-bsale.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markorodriguez/backend-bsale/issues"
+  },
+  "homepage": "https://github.com/markorodriguez/backend-bsale#readme"
 }
