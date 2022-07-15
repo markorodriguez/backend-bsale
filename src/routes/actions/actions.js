@@ -34,14 +34,9 @@ actionsRouter.post("/filter-product", (req, res) => {
     console.log(req.query);
     db_1.default.query("SELECT * FROM product WHERE category = ?", [category_id], (err, rows) => {
         if (!err) {
-            if (rows.length > 0) {
-                const paginatedData = (0, pagination_1.default)(rows, Number.parseInt(page));
-                console.log(rows);
-                res.send(paginatedData);
-            }
-            else {
-                res.redirect("/products?page=1");
-            }
+            const paginatedData = (0, pagination_1.default)(rows, Number.parseInt(page));
+            console.log(rows);
+            res.send(paginatedData);
         }
         else {
             res.send(null);

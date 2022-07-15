@@ -34,7 +34,7 @@ Se debe tener instalado Node.JS en el equipo.
 ### Obtener productos
 
 ```http
-  GET /products
+  GET /products?page
 ```
 Response
 | Campo | Tipo     | Descripción                |
@@ -60,22 +60,24 @@ Response
 ### Buscar producto
 
 ```http
-  POST /find-product
+  POST /find-product?page
 ```
 Request
 | Campo | Tipo     | Descripción                |
 | :-------- | :------- | :------------------------- |
 | `product_name` | `string` | Nombre del producto |
+| `page` | `number` | Identificador de la página para la paginación |
 
 ### Filtrar por categoría
 
 ```http
-  POST /filter-product
+  POST /filter-product?page
 ```
 Request
 | Campo | Tipo     | Descripción                |
 | :-------- | :------- | :------------------------- |
-| `category_id | `number` | Identificador de la categoría |
+| `category_id` | `number` | Identificador de la categoría |
+| `page` | `number` | Identificador de la página para la paginación |
 
 
 
@@ -83,19 +85,27 @@ Request
 
 ### Obtener productos
 ```http
-  GET /products
+  GET /products?page=1
 ```
 Estructura JSON
 ```javascript
 [
     {
-        "id": 5,
-        "name": "ENERGETICA MR BIG",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
-        "price": 1490,
-        "discount": 20,
-        "category": 1
-    },
+    "results": {
+        "next": {
+            "page": 2,
+            "limit": 8
+        },
+        "numberPages": 7,
+        "results": [
+            {
+                "id": 5,
+                "name": "ENERGETICA MR BIG",
+                "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
+                "price": 1490,
+                "discount": 20,
+                "category": 1
+            }
     ...
 ]
 ```
@@ -122,22 +132,26 @@ Estructura JSON
 Estructura JSON
 ```javascript
 [
-    {
-        "id": 5,
-        "name": "ENERGETICA MR BIG",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
-        "price": 1490,
-        "discount": 20,
-        "category": 1
-    },
-    {
-        "id": 6,
-        "name": "ENERGETICA RED BULL",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/redbull8381.jpg",
-        "price": 1490,
-        "discount": 0,
-        "category": 1
-    },
+   {
+    "results": {
+        "numberPages": 1,
+        "results": [
+            {
+                "id": 5,
+                "name": "ENERGETICA MR BIG",
+                "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
+                "price": 1490,
+                "discount": 20,
+                "category": 1
+            },
+            {
+                "id": 6,
+                "name": "ENERGETICA RED BULL",
+                "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/redbull8381.jpg",
+                "price": 1490,
+                "discount": 0,
+                "category": 1
+            }
     ...
 ]
 ```
@@ -151,21 +165,31 @@ Estructura JSON
 ```javascript
 [
     {
-        "id": 8,
-        "name": "PISCO ALTO DEL CARMEN 35º",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto8532.jpg",
-        "price": 7990,
-        "discount": 10,
-        "category": 2
-    },
-    {
-        "id": 9,
-        "name": "PISCO ALTO DEL CARMEN 40º ",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto408581.jpg",
-        "price": 5990,
-        "discount": 0,
-        "category": 2
-    }, ...
+    "results": {
+        "next": {
+            "page": 2,
+            "limit": 8
+        },
+        "numberPages": 3,
+        "results": [
+            {
+                "id": 8,
+                "name": "PISCO ALTO DEL CARMEN 35º",
+                "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto8532.jpg",
+                "price": 7990,
+                "discount": 10,
+                "category": 2
+            },
+            {
+                "id": 9,
+                "name": "PISCO ALTO DEL CARMEN 40º ",
+                "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/alto408581.jpg",
+                "price": 5990,
+                "discount": 0,
+                "category": 2
+            }
+             ...
 ]
 ```
+
 

@@ -43,13 +43,11 @@ actionsRouter.post("/filter-product", (req: any, res: any) => {
     [category_id],
     (err: any, rows: Array<IProduct>) => {
       if (!err) {
-        if (rows.length > 0){
+       
           const paginatedData = pagination(rows, Number.parseInt(page))
           console.log(rows)
           res.send(paginatedData)
-        } else {
-          res.redirect("/products?page=1");
-        }
+        
       } else {
         res.send(null);
       }
