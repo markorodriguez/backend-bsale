@@ -5,9 +5,14 @@ import ICategory from '../../interfaces/ICategory'
 const categoriesRouter = express.Router()
 
 categoriesRouter.get("/", (req:Request, res:Response)=>{
+  const {page}:any = req.query
     db.query("SELECT * FROM category", (err: any, rows: Array<ICategory>) => {
-        res.send(rows);
+            
+      res.send(rows)
+
       });
+
+
 })
 
 export default categoriesRouter;
