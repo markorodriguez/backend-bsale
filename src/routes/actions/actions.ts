@@ -20,13 +20,10 @@ actionsRouter.post("/find-product", (req: Request, res: Response) => {
       [product_name],
       (err: any, rows: Array<IProduct>) => {
         if (!err) {
-          if (rows.length > 0) {
-            const paginatedData = pagination(rows, Number.parseInt(page) )
-            console.log(paginatedData)
-            res.send(paginatedData);
-          } else {
-            res.redirect("/products?page=1");
-          }
+          const paginatedData = pagination(rows, Number.parseInt(page) )
+          console.log(paginatedData)
+          res.send(paginatedData);
+
         } else {
           res.send(null);
         }

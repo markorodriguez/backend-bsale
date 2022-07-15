@@ -23,13 +23,14 @@ const pagination = (value:Array<any>, page:number) => {
                 limit: limitPagination
             }
         }
-        console.log(value.length, 'val length')
+       
+        //Número de páginas si no hay resultados
         if(value.length == 0 || value.length == undefined){
             results.numberPages = 0
         }else{
             results.numberPages = value.length < limitPagination ? 1 : Math.round(value.length/limitPagination)
         }
-        console.log(results, 'results')
+        //Paginación
         results.results = value.slice(startIndex, endIndex)
 
     return({results})
